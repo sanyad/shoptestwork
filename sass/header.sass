@@ -1,0 +1,408 @@
+@import "vars.sass"
+
+body
+	font-family: 'OpenSans-Light', sans-serif
+	font-size: 12px
+	font-weight: 300
+	color: $font-color
+	background-color: $wt
+	display: flex
+	flex-direction: column
+	overflow-x: hidden
+
+.container
+	width: 100%
+	max-width: 834px
+	margin: 0 auto
+	padding: 30px 50px
+	@media (max-width: 767px)
+		padding-left: 15px
+		padding-right: 15px
+
+.header
+	display: flex
+	align-items: center
+	justify-content: space-between
+	@media (max-width: 767px)
+		position: relative
+		padding-top: 60px
+	@media (max-width: 425px)
+		flex-direction: column
+		padding-top: 85px
+.photo
+	width: 47%
+	height: 420px
+	background-color: #eaf2f4
+	display: flex
+	align-items: center
+	justify-content: center
+	@media (max-width: 767px)
+		position: relative
+	@media (max-width: 425px)
+		width: 100%
+		margin-bottom: 15px
+	img
+		max-width: 100%
+	.collapse-sharing
+		position: absolute
+		top: 15px
+		left: 15px
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		display: none
+		@media (max-width: 767px)
+			display: flex
+		@media (max-width: 425px)
+			display: none
+		a
+			width: 41px
+			height: 41px
+			border-radius: 23px
+			border: 2px solid #2c87ce
+			display: flex
+			align-items: center
+			justify-content: center
+			font-size: 10px
+			text-decoration: none
+			color: #2c87ce
+			margin-bottom: 10px
+			&:last-child
+				margin: 0
+
+.product
+	width: 47%
+	display: flex
+	flex-direction: column
+	@media (max-width: 425px)
+		width: 100%
+	&--name
+		text-transform: uppercase
+		font: 700 24px "Oswald"
+		margin-bottom: 15px
+		@media (max-width: 767px)
+			position: absolute
+			top: 0
+			left: 0
+			margin-bottom: 10px
+		@media (max-width: 425px)
+			padding: 0 30px
+	&--id
+		font: 400 10px "OpenSans-Regular"
+		margin-bottom: 15px
+		@media (max-width: 767px)
+			margin-bottom: 10px
+		@media (max-width: 425px)
+			padding: 0 30px
+	&--price
+		font: 700 24px "OpenSans-Bold"
+		color: $red
+		margin-bottom: 15px
+		@media (max-width: 767px)
+			margin-bottom: 10px
+		@media (max-width: 425px)
+			padding: 0 30px
+		span
+			margin-right: 20px
+			color: $font-color
+			text-decoration: line-through
+
+	&--description
+		font-size: 12px
+		margin-bottom: 15px
+		@media (max-width: 767px)
+			margin-bottom: 10px
+		@media (max-width: 425px)
+			padding: 0 30px
+	&--sharing
+		display: flex
+		align-items: center
+		margin-bottom: 15px
+		@media (max-width: 767px)
+			margin-bottom: 10px
+		@media (max-width: 425px)
+			flex-direction: column
+			align-items: flex-start
+			padding: 0 30px
+		.rating 
+			border: none
+			float: left
+			margin: 0
+			padding: 0
+		.rating > input
+			display: none
+		.rating > label:before
+			margin: 5px
+			font-size: 1.25em
+			font-family: FontAwesome
+			display: inline-block
+			content: "\f005"
+		.rating > .half:before
+			content: "\f089"
+			position: absolute
+		.rating > label
+			color: #ababab
+			float: right
+		.rating > input:checked ~ label,
+		.rating:not(:checked) > label:hover,
+		.rating:not(:checked) > label:hover ~ label
+			color: $red
+
+		.rating > input:checked + label:hover,
+		.rating > input:checked ~ label:hover,
+		.rating > label:hover ~ input:checked ~ label,
+		.rating > input:checked ~ label:hover ~ label
+			color: $red
+	&--size,
+	&--color
+		display: flex
+		align-items: center
+		font: 700 14px "OpenSans-Bold"
+		text-transform: uppercase
+		margin-bottom: 15px
+		position: relative
+		@media (max-width: 425px)
+			padding: 0 30px
+			flex-direction: column
+			align-items: flex-start
+		span
+			position: absolute
+			top: 50%
+			left: 0
+			transform: translateY(-50%)
+			@media (max-width: 425px)
+				position: static
+				transform: none
+				margin-bottom: 10px
+
+
+
+.social-sharing
+	background: none
+	padding: 0
+	outline: none
+	box-shadow: none
+	border: none
+	color: #2c87ce
+	cursor: pointer
+	font: 700 18px "OpenSans-Bold"
+	margin-left: 10px
+	position: relative
+	@media (max-width: 425px)
+		margin: 0
+	.collapse-sharing
+		position: absolute
+		top: 35px
+		left: 50%
+		transform: translateX(-50%)
+		background-color: $wt
+		//display: flex
+		align-items: center
+		justify-content: center
+		padding: 20px 13px
+		box-shadow: 0 0 7px 2px rgba(204,204,204,1)
+		display: none
+		@media (max-width: 425px)
+			margin: 25px 0 20px
+			display: flex
+			position: static
+			background: none
+			box-shadow: none
+			left: 0
+			transform: none
+			top: 0
+			padding: 0
+		&:before
+			content: ""
+			position: absolute
+			width: 16px
+			height: 16px
+			background-color: $wt
+			top: -5px
+			left: 50%
+			transform: translateX(-50%) rotate(45deg)
+			box-shadow: inset 0 0 0 0 #fff, 0 0 2px 2px #fff, -3px -3px 0px 1px #ccc, 0 0 0px 0px #ccc
+			z-index: 3
+			@media (max-width: 425px)
+				display: none
+		a
+			width: 41px
+			height: 41px
+			border-radius: 23px
+			border: 2px solid #2c87ce
+			display: flex
+			align-items: center
+			justify-content: center
+			font-size: 10px
+			text-decoration: none
+			color: #2c87ce
+			margin: 0 5px
+			&:first-child
+				margin-left: 0
+			&:last-child
+				margin-right: 0
+		img
+			margin-left: 10px
+			@media (max-width: 425px)
+				display: none
+	&.active
+		.collapse-sharing
+			display: flex
+	@media (max-width: 767px)
+		display: none
+	@media (max-width: 425px)
+		display: flex
+		span
+			display: none
+.size-box,
+.color-box
+	display: flex
+	margin-left: 70px
+	@media (max-width: 767px)
+		margin-left: 55px
+		flex-wrap: wrap
+		justify-content: space-evenly
+	@media (max-width: 425px)
+		margin: 0
+	a
+		width: 39px
+		height: 39px
+		border: 1px solid #cccccc
+		overflow: hidden
+		border-radius: 20px
+		margin: 0 6px
+		display: flex
+		align-items: center
+		justify-content: center
+		text-transform: uppercase
+		font-size: 10px
+		text-decoration: none
+		color: $font-color
+		transition: all .3s
+		outline: none
+		@media (max-width: 767px)
+			margin-bottom: 5px
+		@media (max-width: 425px)
+			margin-bottom: 0
+		&:hover, &.active
+			box-shadow: 0 0 7px 2px rgba(204,204,204,1)
+.color-box
+	a
+		width: 41px
+		height: 41px
+
+
+#blue
+	background-color: $blue
+#green
+	background-color: $green
+#pink
+	background-color: $pink
+#purple
+	background-color: $purple
+.productBtn
+	width: 100%
+	max-width: 214px
+	height: 44px
+	display: flex
+	align-items: center
+	justify-content: center
+	text-transform: uppercase
+	font: 700 14px "OpenSans-Bold"
+	border-radius: 22px
+	background-color: $btn
+	@media (max-width: 425px)
+		margin: 0 auto
+
+h3
+	font: 700 22px "OpenSans-Bold"
+	margin-top: 0
+	margin-bottom: 18px
+	@media (max-width: 767px)
+		text-align: center
+.main-content
+	margin-top: 70px
+	@media (max-width: 425px)
+		position: relative
+	.product-list
+		display: flex
+		align-items: center
+		justify-content: space-between
+		flex-wrap: wrap
+		@media (max-width: 425px)
+			display: none
+		&--product
+			width: 32%
+			margin-bottom: 20px
+			text-decoration: none
+			color: $font-color
+			@media (max-width: 767px)
+				width: 48%
+			.img-container
+				height: 265px
+				position: relative
+				transition: all .3s
+				overflow: hidden
+				@media (max-width: 767px)
+					height: 284px
+				.product--price
+					position: absolute
+					right: 0
+					bottom: 22px
+					margin: 0
+					background-color: $btn
+					padding: 0 10px
+					@media (max-width: 767px)
+						text-align: center
+						bottom: 0
+						width: 100%
+						left: 0
+						padding: 0
+						background-color: rgba(146,219,204, .8)
+						.sale
+							display: none
+					.customPrice
+						text-decoration: none
+						margin-right: 0
+				img
+					width: 100%
+					height: 100%
+					object-fit: cover
+			&:hover
+				.img-container
+					box-shadow: 0 0 10px 5px rgba(204,204,204,1)
+		.name-product
+			font: 700 14px "OpenSans-Bold"
+			text-transform: uppercase
+			text-align: center
+			margin-top: 10px
+	.slider-product
+		display: none
+		max-width: 280px
+		margin: 0 auto
+		.product-list--product
+			.img-container
+				height: 265px
+				img
+					max-width: 100%
+					margin: 0 auto
+			.name-product
+				font: 700 16px "OpenSans-Bold"
+				text-transform: uppercase
+				text-align: center
+				margin-top: 10px
+		@media (max-width: 425px)
+			display: block
+	.buttonSliderGroup
+		display: none
+		position: absolute
+		width: 100%
+		top: 155px
+		.prev-btn, .next-btn
+			position: absolute
+		.prev-btn
+			left: -10px
+		.next-btn
+			right: -10px
+		@media (max-width: 425px)
+			display: block
